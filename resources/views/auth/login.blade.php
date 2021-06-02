@@ -34,7 +34,7 @@
                             <div class="row">
                                 <div class="col-xl-12 col-md-6 mb-4">
                                     <label for="username">username</label>
-                                    <input type="text" class="form-control" name="username">
+                                    <input type="text" class="form-control" name="name">
                                 </div>
                                 <div class="col-xl-12 col-md-6 mb-4">
                                     <label for="password">password</label>

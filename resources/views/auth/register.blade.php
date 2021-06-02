@@ -34,21 +34,32 @@
                                 <div class="col-xl-12 col-md-6 mb-4">
                                     <label for="username">Username</label>
                                     <input type="text" class="form-control" name="username">
+                                    @error('username')
+                                        <div class="alert alert-danger mt-2">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-xl-12 col-md-6 mb-4">
                                     <label for="password">Password</label>
                                     <input type="password" class="form-control" name="password">
+                                    @error('password')
+                                    <div class="alert alert-danger mt-2">{{ $message }}</div>
+                                @enderror
                                 </div>
                                 <div class="col-xl-12 col-md-6 mb-4">
                                     <label for="password_confirmation">Confirm Password</label>
-                                    <input type="password" class="form-control" name="password_confirmation" id="password_confirmation">
+                                    <input type="password" class="form-control" name="password_confirmation"
+                                        id="password_confirmation">
+                                    
                                 </div>
                                 <div class="col-xl-12 col-md-6 mb-4">
                                     <label for="email">Email</label>
                                     <input type="email" class="form-control" name="email">
+                                    @error('email')
+                                        <div class="alert alert-danger mt-2">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="col-xl-12 col-md-6 mb-4">
-                                    <button class="btn btn-primary"  type="submit">Submit</button>
+                                    <button class="btn btn-primary" type="submit">Submit</button>
                                 </div>
                             </div>
                         </form>
@@ -59,5 +70,5 @@
     </div>
 
 
-    
+
 @endsection
