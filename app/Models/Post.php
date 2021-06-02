@@ -7,9 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+
+
+
+
     use HasFactory;
+
+    protected $fillable = [
+        'title',
+        'content',
+        'author_id',
+    ];
 
     function user(){
         return $this->belongsTo(User::class);
+    }
+
+    function userMany(){
+        return $this->hasMany(User::class);
     }
 }
