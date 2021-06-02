@@ -19,8 +19,8 @@ class Post extends Model
         'author_id',
     ];
 
-    function user(){
-        return $this->belongsTo(User::class);
+    function users(){
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     function userMany(){

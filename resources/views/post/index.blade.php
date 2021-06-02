@@ -32,12 +32,17 @@
                                     <label for="title">Title</label>
                                     <input type="text" class="form-control" name="title">
                                 </div>
+                                @error('title')
+                                    <div class="alert alert-danger mt-2">{{ $message }}</div>
+                                @enderror
                                 <div class="col-xl-12 col-md-6 mb-4">
                                     <label for="desc" class="mt-1">Description</label>
                                     {{-- <div id="summernote"></div> --}}
-                                    <textarea class="summernote" name="content" id="summernote"></textarea>
+                                    <textarea class="summernote" name="content" ></textarea>
+                                    @error('title')
+                                        <div class="alert alert-danger mt-2">{{ $message }}</div>
+                                    @enderror
                                 </div>
-                                <input type="hidden" class="form-control" name="author_id" value="2">
                                 <div class="col-xl-12 col-md-6 mb-4">
                                     <button class="btn btn-primary" name="submit" type="submit">Submit</button>
                                 </div>
@@ -50,8 +55,7 @@
     </div>
 
     <script>
-
-        $('#summernote').summernote({
+        $('.summernote').summernote({
             placeholder: 'Description',
             tabsize: 2,
             height: 120,
@@ -61,7 +65,7 @@
                 ['color', ['color']],
                 ['para', ['ul', 'ol', 'paragraph']],
                 ['table', ['table']],
-                ['insert', ['link', 'picture', 'video']],
+                ['insert', ['link']],
                 ['view', ['fullscreen', 'codeview', 'help']]
             ]
         });

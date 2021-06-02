@@ -13,48 +13,54 @@
 
 @section('content')
 
-<div class="container">
-
-
     <div class="container">
-        <div class="row">
-            <div class="col-xl-12 col-md-6 mb-4  mt-5">
-                <div class="card mx-auto" style="width: 50rem;">
-                    <div class="card-header">
-                        Login
-                    </div>
-                    <div class="card-body">
-                        @if (Session::has('message'))
-                            <div class="alert alert-success text-center col-6 mx-auto">
-                                {{ Session::get('message') }}
-                            </div>php artisan migrate:refresh
-                        @endif
-                        <form method="post" action="{{ route('auth.store') }}" enctype="multipart/form-data">
-                            @csrf
-                            <div class="row">
-                                <div class="col-xl-12 col-md-6 mb-4">
-                                    <label for="username">username</label>
-                                    <input type="text" class="form-control" name="name">
-                                </div>
-                                <div class="col-xl-12 col-md-6 mb-4">
-                                    <label for="password">password</label>
-                                    <input type="password" class="form-control" name="password">
 
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-md-6 mb-4  mt-5">
+                    <div class="card mx-auto" style="width: 50rem;">
+                        <div class="card-header">
+                            Login
+                        </div>
+                        <div class="card-body">
+                            @if (Session::has('status'))
+                                <div class="alert alert-success text-center col-6 mx-auto">
+                                    {{ Session::get('status') }}
                                 </div>
-                                <div class="col-xl-12 col-md-6 mb-4">
-                                    <button class="btn btn-primary" name="submit" type="submit">Submit</button>
+                            @endif
+                            <form method="post" action="{{ route('auth.login.store') }}" enctype="multipart/form-data">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-xl-12 col-md-6 mb-4">
+                                        <label for="email">Email</label>
+                                        <input type="email" class="form-control" name="email">
+                                        @error('email')
+                                            <div class="alert alert-danger mt-2">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-xl-12 col-md-6 mb-4">
+                                        <label for="password">password</label>
+                                        <input type="password" class="form-control" name="password">
+                                        @error('password')
+                                            <div class="alert alert-danger mt-2">{{ $message }}</div>
+                                        @enderror
+
+                                    </div>
+                                    <div class="col-xl-12 col-md-6 mb-4">
+                                        <button class="btn btn-primary" name="submit" type="submit">Submit</button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
+
+
     </div>
 
-
-
-
-</div>
-    
 @endsection

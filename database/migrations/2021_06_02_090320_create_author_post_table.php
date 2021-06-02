@@ -13,12 +13,12 @@ class CreateAuthorPostTable extends Migration
      */
     public function up()
     {
-        Schema::create('author_post', function (Blueprint $table) {
+        Schema::create('user_post', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('author_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('post_id')->unsigned();
             $table->timestamps();
-            $table->foreign('author_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
         });
     }

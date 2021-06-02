@@ -32,9 +32,23 @@
                             @csrf
                             <div class="row">
                                 <div class="col-xl-12 col-md-6 mb-4">
+                                    <label for="username">Name</label>
+                                    <input type="text" class="form-control" name="name">
+                                    @error('name')
+                                        <div class="alert alert-danger mt-2">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-xl-12 col-md-6 mb-4">
                                     <label for="username">Username</label>
                                     <input type="text" class="form-control" name="username">
                                     @error('username')
+                                        <div class="alert alert-danger mt-2">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-xl-12 col-md-6 mb-4">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" name="email">
+                                    @error('email')
                                         <div class="alert alert-danger mt-2">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -51,16 +65,11 @@
                                         id="password_confirmation">
                                     
                                 </div>
-                                <div class="col-xl-12 col-md-6 mb-4">
-                                    <label for="email">Email</label>
-                                    <input type="email" class="form-control" name="email">
-                                    @error('email')
-                                        <div class="alert alert-danger mt-2">{{ $message }}</div>
-                                    @enderror
-                                </div>
+
                                 <div class="col-xl-12 col-md-6 mb-4">
                                     <button class="btn btn-primary" type="submit">Submit</button>
                                 </div>
+                                
                             </div>
                         </form>
                     </div>
