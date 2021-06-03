@@ -62,6 +62,9 @@
                 @auth
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
+                            <p class="nav-link mb-0">{{ auth()->user()->name }}</p> 
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}">Logout <span
                                     class="sr-only">(current)</span></a>
                         </li>

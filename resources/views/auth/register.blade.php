@@ -33,21 +33,21 @@
                             <div class="row">
                                 <div class="col-xl-12 col-md-6 mb-4">
                                     <label for="username">Name</label>
-                                    <input type="text" class="form-control" name="name">
+                                    <input type="text" class="form-control" name="name" value="{{ old('name') }}">
                                     @error('name')
                                         <div class="alert alert-danger mt-2">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-xl-12 col-md-6 mb-4">
                                     <label for="username">Username</label>
-                                    <input type="text" class="form-control" name="username">
+                                    <input type="text" class="form-control" name="username" value="{{ old('username') }}">
                                     @error('username')
                                         <div class="alert alert-danger mt-2">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-xl-12 col-md-6 mb-4">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control" name="email">
+                                    <input type="email" class="form-control" name="email" value="{{ old('email') }}">
                                     @error('email')
                                         <div class="alert alert-danger mt-2">{{ $message }}</div>
                                     @enderror

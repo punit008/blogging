@@ -23,9 +23,11 @@ class PostController extends Controller
         return view('post.index');
     }
 
-    function show(Post $post){
+    function show(Post $post)
+    {
         return view(
-            'post.edit', compact('post')
+            'post.edit',
+            compact('post')
 
         );
     }
@@ -39,7 +41,7 @@ class PostController extends Controller
             $request,
             [
                 'title' => 'required|min:3|max:255',
-                'content' => 'required|min:3'
+                'content' => 'required|min:30'
             ]
         );
 
@@ -59,7 +61,16 @@ class PostController extends Controller
     }
 
 
-    function update(Request $request, $id){
+    function update(Request $request, $id)
+    {
+
+        $this->validate(
+            $request,
+            [
+                'title' => 'required|min:3|max:255',
+                'content' => 'required|min:30'
+            ]
+        );
 
         $post = Post::find($id);
         $post->title = $request->title;
@@ -77,9 +88,12 @@ class PostController extends Controller
     public function delete($id)
     {
         $post = Post::find($id);
-        // dd($post);
-        $post->delete();
-
-        return back()->with('message', 'Post Deleted');
+        $id = auth()->user()->id;
+        if ($post->user_id === $id) {
+            $post->delete();
+            return back()->with('message', 'Post Deleted');
+        } else {
+            return back()->with('message', 'Your are not original author');
+        }
     }
 }

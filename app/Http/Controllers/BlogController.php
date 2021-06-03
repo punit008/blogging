@@ -20,6 +20,7 @@ class BlogController extends Controller
     function index()
     {
         $posts = Post::paginate(5);
+
         return view('index', compact('posts'));
     }
 
@@ -37,4 +38,5 @@ class BlogController extends Controller
         
         return view('blog', compact('post'), compact('users'));
     }
+
 }

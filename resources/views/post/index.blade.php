@@ -30,16 +30,16 @@
                             <div class="row">
                                 <div class="col-xl-12 col-md-6 mb-4">
                                     <label for="title">Title</label>
-                                    <input type="text" class="form-control" name="title">
+                                    <input type="text" class="form-control" name="title" value="{{ old('title')}}">
                                     @error('title')
                                         <div class="alert alert-danger mt-2">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-xl-12 col-md-6 mb-4">
                                     <label for="desc" class="mt-1">Description</label>
-                                    <textarea class="summernote" name="content"></textarea>
+                                    <textarea class="summernote" name="content">{{ old('content')}}</textarea>
                                     @error('content')
-                                        <div class="alert alert-danger mt-2">{{ $message }}</div>
+                                        <div class="alert alert-danger mt-2">{{ $message }} </div>
                                     @enderror
                                 </div>
                                 <div class="col-xl-12 col-md-6 mb-4">
