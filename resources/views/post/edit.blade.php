@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 @endsection
 
-@section('title', 'Add Posts')
+@section('title', 'Edit Posts')
 
 @section('content')
 
@@ -17,7 +17,7 @@
             <div class="col-xl-12 col-md-6 mb-4  mt-5">
                 <div class="card mx-auto" style="width: 50rem;">
                     <div class="card-header">
-                        Post
+                       Edit Post
                     </div>
                     <div class="card-body">
                         @if (Session::has('message'))
@@ -25,25 +25,27 @@
                                 {{ Session::get('message') }}
                             </div>
                         @endif
-                        <form method="post" action="{{ route('post.store') }}" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('post.update', [$post->id]) }}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-xl-12 col-md-6 mb-4">
                                     <label for="title">Title</label>
-                                    <input type="text" class="form-control" name="title">
+                                    <input type="text" class="form-control" name="title" value="{{ $post->title }}">
                                     @error('title')
                                         <div class="alert alert-danger mt-2">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-xl-12 col-md-6 mb-4">
                                     <label for="desc" class="mt-1">Description</label>
-                                    <textarea class="summernote" name="content"></textarea>
+                                    <textarea class="summernote" name="content">
+                                        {{ $post->content }}
+                                    </textarea>
                                     @error('content')
                                         <div class="alert alert-danger mt-2">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-xl-12 col-md-6 mb-4">
-                                    <button class="btn btn-primary" name="submit" type="submit">Submit</button>
+                                    <button class="btn btn-primary" type="submit">Update</button>
                                 </div>
                             </div>
                         </form>

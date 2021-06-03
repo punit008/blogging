@@ -23,6 +23,15 @@ class PostController extends Controller
         return view('post.index');
     }
 
+    function show(Post $post){
+        return view(
+            'post.edit', compact('post')
+
+        );
+    }
+
+
+
     function store(Request $request)
     {
 
@@ -47,5 +56,21 @@ class PostController extends Controller
 
         // dd(auth()->user()->id);
         return back()->with('message', "Post Added");
+    }
+
+
+    function update(Request $request, $id){
+
+        $post = Post::find($id);
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->save();
+
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+
+        $user->user_post()->attach($post->id);
+
+        return back()->with('message', "Post Updated");
     }
 }

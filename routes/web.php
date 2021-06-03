@@ -27,6 +27,10 @@ Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register/store', [RegisterController::class, 'store'])->name('auth.register.store');
 
 Route::get('/post', [PostController::class, 'index'])->name('post.index');
+Route::get('/post/{post}', [PostController::class, 'show'])->name('post.show');
 Route::post('/post/store', [PostController::class, 'store'])->name('post.store');
+Route::post('/post/update/{id}', [PostController::class, 'update'])->name('post.update');
+
+Route::get('/blog/{post}', [BlogController::class, 'show'])->name('blog');
 
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');

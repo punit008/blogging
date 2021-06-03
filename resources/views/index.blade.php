@@ -13,6 +13,7 @@
                     <th scope="col">Title</th>
                     <th scope="col">Description</th>
                     <th scope="col">Author</th>
+                    <th scope="col">View</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,8 +24,9 @@
                     <tr>
                       <th scope="row">{{ $loop->iteration }}</th>
                       <td>{{ $post->title }}</td>
-                      <td>{{ $post->content }}</td>
+                      <td>{{ Str::words($post->content,50) }} <a href="{{ route('blog', ['post' => $post->id]) }}" class="text-primary">Read more</a> </td>
                       <td>{{ $post->users['name'] }}</td>
+                      <td><a href="{{ route('post.show',['post' => $post->id]) }}" class="btn btn-primary">View</a></td>
                     </tr>
                     @endforeach
 
