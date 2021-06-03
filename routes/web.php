@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [BlogController::class, 'index'])->name('dashboard');
+
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login/store', [LoginController::class, 'store'])->name('auth.login.store');
@@ -26,12 +26,19 @@ Route::post('/login/store', [LoginController::class, 'store'])->name('auth.login
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register/store', [RegisterController::class, 'store'])->name('auth.register.store');
 
-Route::get('/post', [PostController::class, 'index'])->name('post.index');
-Route::get('/post/{post}', [PostController::class, 'show'])->name('post.show');
-Route::post('/post/store', [PostController::class, 'store'])->name('post.store');
-Route::post('/post/update/{id}', [PostController::class, 'update'])->name('post.update');
-Route::post('/post/delete/{id}', [PostController::class, 'delete'])->name('post.delete');
+Route::middleware('auth')->group(function () {
+    Route::get('/', [BlogController::class, 'index'])->name('dashboard');
+    Route::get('/blog/{post}', [BlogController::class, 'show'])->name('blog');
+    Route::resource('posts', PostController::class);
+    Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
+});
 
-Route::get('/blog/{post}', [BlogController::class, 'show'])->name('blog');
 
-Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
+
+// Route::get('/post', [PostController::class, 'index'])->name('post.index');
+// Route::get('/post/{post}', [PostController::class, 'show'])->name('post.show');
+// Route::post('/post/store', [PostController::class, 'store'])->name('post.store');
+// Route::post('/post/update/{id}', [PostController::class, 'update'])->name('post.update');
+// Route::post('/post/delete/{id}', [PostController::class, 'delete'])->name('post.delete');
+
+

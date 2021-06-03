@@ -27,6 +27,7 @@
                         @endif
                         <form method="post" action="{{ route('post.update', [$post->id]) }}" enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" name="method" value="PATCH">
                             <div class="row">
                                 <div class="col-xl-12 col-md-6 mb-4">
                                     <label for="title">Title</label>

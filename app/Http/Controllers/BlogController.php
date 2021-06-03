@@ -12,11 +12,6 @@ use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['auth']);
-    }
-
     function index()
     {
         $posts = Post::paginate(5);
@@ -26,15 +21,7 @@ class BlogController extends Controller
 
     function show(Post $post)
     {
-        // dd($post);
-        $user_name = UserPost::where('post_id', $post->id)
-        ->get();
-        $userId = array();
-        foreach($user_name->unique('user_id') as $item){
-            array_push($userId, $item['user_id']) ;
-        }
-        $users = User::whereIn('id', $userId)->get();
-        
+        $users = $post->user_post->pluck('name');
         
         return view('blog', compact('post'), compact('users'));
     }
