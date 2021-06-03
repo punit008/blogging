@@ -14,7 +14,10 @@
                     </div>
                     <div class="card-body">
                        <h4 class="text-primary">Author</h4>
-                        {{ $post->user_post }}
+                           @foreach ($users as $item)
+                               {{ $item->name }}
+                               <br>
+                           @endforeach
                        <h4 class="text-primary">Description</h4>
                         {!! $post->content !!}
                     </div>

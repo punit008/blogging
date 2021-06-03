@@ -27,4 +27,8 @@ class Post extends Model
     function user_post(){
         return $this->belongsToMany(User::class,'user_post','user_id','post_id');
     }
+
+    function user_name(){
+        return $this->belongsToMany(UserPost::class,'user_post','user_id','post_id');
+    }
 }

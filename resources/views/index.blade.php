@@ -17,8 +17,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Title</th>
                     <th scope="col">Description</th>
-                    <th scope="col">Author</th>
-                    <th scope="col">View</th>
+                    <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                 </tr>
             </thead>
@@ -33,8 +32,7 @@
                             <td>{!! Str::words($post->content, 50) !!} <a
                                     href="{{ route('blog', ['post' => $post->id]) }}" class="text-primary">Read more</a>
                             </td>
-                            <td>{{ $post->users['name'] }}</td>
-                            <td><a href="{{ route('post.show', ['post' => $post->id]) }}" class="btn btn-primary">View</a>
+                            <td><a href="{{ route('post.show', ['post' => $post->id]) }}" class="btn btn-primary">Edit</a>
                             </td>
                             <td>
                                 <form action="{{ route('post.delete', [$post->id]) }}" method="post">
@@ -47,7 +45,7 @@
 
                 @else
                     <tr>
-                        <td colspan="4">No Record Found</td>
+                        <td colspan="4" class="text-center">No Record Found</td>
                     </tr>
                 @endif
 
