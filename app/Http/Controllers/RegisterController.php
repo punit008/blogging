@@ -8,11 +8,17 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
-    function index() {
+    public function __construct()
+    {
+        $this->middleware(['guest']);
+    }
+    function index()
+    {
         return view('auth.register');
     }
 
-    function store(Request $request) {
+    function store(Request $request)
+    {
 
         $this->validate($request, [
             'name' => 'required|min:3|max:255',
@@ -28,6 +34,6 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
-        return redirect()->route('auth.login');
+        return redirect()->route('login');
     }
 }

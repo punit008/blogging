@@ -38,10 +38,10 @@
                             Post
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('post.index') }}">Edit Post</a>
-                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="{{ route('post.index') }}">Add Post</a>
+                            <a class="dropdown-item" href="#">Edit Post</a>
                             {{-- <div class="dropdown-divider"></div> --}}
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            {{-- <a class="dropdown-item" href="#">Something else here</a> --}}
                         </div>
                     </li>
                 @endauth
@@ -51,11 +51,11 @@
                 @guest
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('auth.login') }}">Login <span
+                            <a class="nav-link" href="{{ route('login') }}">Login <span
                                     class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('auth.register') }}">Register <span
+                            <a class="nav-link" href="{{ route('register') }}">Register <span
                                     class="sr-only">(current)</span></a>
                         </li>
                     </ul>

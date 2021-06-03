@@ -20,10 +20,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [BlogController::class, 'index'])->name('dashboard');
 
-Route::get('/login', [LoginController::class, 'index'])->name('auth.login');
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login/store', [LoginController::class, 'store'])->name('auth.login.store');
 
-Route::get('/register', [RegisterController::class, 'index'])->name('auth.register');
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register/store', [RegisterController::class, 'store'])->name('auth.register.store');
 
 Route::get('/post', [PostController::class, 'index'])->name('post.index');
