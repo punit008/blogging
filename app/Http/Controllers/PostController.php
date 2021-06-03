@@ -73,4 +73,13 @@ class PostController extends Controller
 
         return back()->with('message', "Post Updated");
     }
+
+    public function delete($id)
+    {
+        $post = Post::find($id);
+        // dd($post);
+        $post->delete();
+
+        return back()->with('message', 'Post Deleted');
+    }
 }

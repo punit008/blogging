@@ -13,7 +13,7 @@
                         {{ $post->title }}
                     </div>
                     <div class="card-body">
-                       <p class="text-primary">Author</p>
+                       <h4 class="text-primary">Author</h4>
                         {{ $post->user_post }}
                        <h4 class="text-primary">Description</h4>
                         {{ $post->content }}
