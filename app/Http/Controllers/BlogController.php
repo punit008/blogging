@@ -11,9 +11,10 @@ class BlogController extends Controller
     {
         $this->middleware(['auth']);
     }
-    
+
     function index() {
-        $posts = Post::get();
+        $posts = Post::paginate(5);
         return view('index', compact('posts'));
+    
     }
 }

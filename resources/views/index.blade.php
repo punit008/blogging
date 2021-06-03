@@ -18,13 +18,14 @@
             <tbody>
 
                 @if ($posts->count())
+
                     @foreach ($posts as $post)
                     <tr>
                       <th scope="row">{{ $loop->iteration }}</th>
                       <td>{{ $post->title }}</td>
                       <td>{{ $post->content }}</td>
                       <td>{{ $post->users['name'] }}</td>
-                      </tr>
+                    </tr>
                     @endforeach
 
                 @else
@@ -36,6 +37,9 @@
 
             </tbody>
         </table>
+        <div class="text-center">
+            {{ $posts->links() }}
+        </div> 
     </div>
 
 @endsection
