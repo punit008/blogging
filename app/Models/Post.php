@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\UserPost;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -23,7 +24,7 @@ class Post extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    function userMany(){
-        return $this->hasMany(User::class);
+    function user_post(){
+        return $this->belongsToMany(User::class,'user_post','user_id','post_id');
     }
 }

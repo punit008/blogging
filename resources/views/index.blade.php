@@ -12,7 +12,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Title</th>
                     <th scope="col">Description</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">Author</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,7 +20,7 @@
                 @if ($posts->count())
                     @foreach ($posts as $post)
                     <tr>
-                      <th scope="row">1</th>
+                      <th scope="row">{{ $loop->iteration }}</th>
                       <td>{{ $post->title }}</td>
                       <td>{{ $post->content }}</td>
                       <td>{{ $post->users['name'] }}</td>

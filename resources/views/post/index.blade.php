@@ -23,7 +23,7 @@
                         @if (Session::has('message'))
                             <div class="alert alert-success text-center col-6 mx-auto">
                                 {{ Session::get('message') }}
-                            </div>php artisan migrate:refresh
+                            </div>
                         @endif
                         <form method="post" action="{{ route('post.store') }}" enctype="multipart/form-data">
                             @csrf
@@ -31,15 +31,15 @@
                                 <div class="col-xl-12 col-md-6 mb-4">
                                     <label for="title">Title</label>
                                     <input type="text" class="form-control" name="title">
+                                    @error('title')
+                                        <div class="alert alert-danger mt-2">{{ $message }}</div>
+                                    @enderror
                                 </div>
-                                @error('title')
-                                    <div class="alert alert-danger mt-2">{{ $message }}</div>
-                                @enderror
                                 <div class="col-xl-12 col-md-6 mb-4">
                                     <label for="desc" class="mt-1">Description</label>
                                     {{-- <div id="summernote"></div> --}}
-                                    <textarea class="summernote" name="content" ></textarea>
-                                    @error('title')
+                                    <textarea class="summernote" name="content"></textarea>
+                                    @error('content')
                                         <div class="alert alert-danger mt-2">{{ $message }}</div>
                                     @enderror
                                 </div>

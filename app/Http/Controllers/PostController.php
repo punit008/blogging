@@ -26,8 +26,6 @@ class PostController extends Controller
     function store(Request $request)
     {
 
-
-        // dd($request);
         $this->validate(
             $request,
             [
@@ -35,22 +33,19 @@ class PostController extends Controller
                 'content' => 'required|min:3'
             ]
         );
-        // Post::create([
-        //     'title' => $request->title,
-        //     'content' => $request->content,
 
-        // ]);
-
-        // dd($request->user()->posts);
 
         $id = $request->user()->posts()->create([
             'title' => $request->title,
             'content' => $request->content
         ])->id;
 
-        dd(auth()->user()->id);
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
 
+        $user->user_post()->attach($id);
 
-        // return back()->with('message', "Post Added");
+        // dd(auth()->user()->id);
+        return back()->with('message', "Post Added");
     }
 }

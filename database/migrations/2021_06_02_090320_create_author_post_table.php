@@ -30,6 +30,6 @@ class CreateAuthorPostTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('author_post');
+        Schema::dropIfExists('user_post');
     }
 }

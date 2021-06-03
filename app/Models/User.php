@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\UserPost;
 
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -47,5 +48,9 @@ class User extends Authenticatable
     
     public function posts() {
         return $this->hasMany(Post::class);
+    }
+
+    function user_post(){
+        return $this->belongsToMany(Post::class,'user_post','user_id','post_id');
     }
 }
