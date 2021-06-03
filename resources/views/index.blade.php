@@ -17,6 +17,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Title</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Author</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                 </tr>
@@ -26,14 +27,17 @@
                 @if ($posts->count())
 
                     @foreach ($posts as $post)
+
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $post->title }}</td>
-                            <td>{!! Str::words($post->content, 50) !!} <a
-                                    href="{{ route('blog', ['post' => $post->id]) }}" class="text-primary">Read more</a>
+                            <td>{!! Str::words($post->content, 50) !!} <a href="{{ route('blog', ['post' => $post->id]) }}"
+                                    class="text-primary">Read more</a>
                             </td>
+                            <td>{{ $post->users->name }}</td>
                             <td><a href="{{ route('post.show', ['post' => $post->id]) }}" class="btn btn-primary">Edit</a>
                             </td>
+
                             <td>
                                 <form action="{{ route('post.delete', [$post->id]) }}" method="post">
                                     @csrf
