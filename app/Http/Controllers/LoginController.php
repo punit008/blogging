@@ -32,13 +32,6 @@ class LoginController extends Controller
         }
         return redirect()->route('dashboard');
 
-        // if (Auth::attempt($credentials)) {
-        //     $request->session()->regenerate();
-        //     // Session::put('user_id', Auth::user()->id);
-        //     $request->session()->put('user_id', Auth::user()->id);
-        //     dd($request->session()->all());
 
-        //     // return redirect()->intended('dashboard');
-        // }
     }
 }

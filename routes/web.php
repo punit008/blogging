@@ -27,9 +27,9 @@ Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register/store', [RegisterController::class, 'store'])->name('auth.register.store');
 
 Route::middleware('auth')->group(function () {
+    Route::resource('posts', PostController::class);
     Route::get('/', [BlogController::class, 'index'])->name('dashboard');
     Route::get('/blog/{post}', [BlogController::class, 'show'])->name('blog');
-    Route::resource('posts', PostController::class);
     Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 });
 

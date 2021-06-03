@@ -35,12 +35,13 @@
                                     class="text-primary">Read more</a>
                             </td>
                             <td>{{ $post->users->name }}</td>
-                            <td><a href="{{ route('post.show', ['post' => $post->id]) }}" class="btn btn-primary">Edit</a>
+                            <td><a href="{{ route('posts.show', ['post' => $post->id]) }}" class="btn btn-primary">Edit</a>
                             </td>
 
                             <td>
-                                <form action="{{ route('post.delete', [$post->id]) }}" method="post">
+                                <form action="{{ route('posts.destroy', [$post->id]) }}" method="post">
                                     @csrf
+                                    @method('DELETE')
                                     <button class="btn btn-danger" type="submit">Delete</button>
                                 </form>
                             </td>

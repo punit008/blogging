@@ -25,7 +25,7 @@
                                 {{ Session::get('message') }}
                             </div>
                         @endif
-                        <form method="post" action="{{ route('post.store') }}" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('posts.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-xl-12 col-md-6 mb-4">
