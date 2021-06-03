@@ -30,7 +30,7 @@
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $post->title }}</td>
-                            <td>{{ Str::words($post->content, 50) }} <a
+                            <td>{!! Str::words($post->content, 50) !!} <a
                                     href="{{ route('blog', ['post' => $post->id]) }}" class="text-primary">Read more</a>
                             </td>
                             <td>{{ $post->users['name'] }}</td>

@@ -16,7 +16,7 @@
                        <h4 class="text-primary">Author</h4>
                         {{ $post->user_post }}
                        <h4 class="text-primary">Description</h4>
-                        {{ $post->content }}
+                        {!! $post->content !!}
                     </div>
                 </div>
             </div>
