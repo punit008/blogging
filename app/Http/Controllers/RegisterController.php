@@ -3,29 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\RegisterCreateRequest;
 
 class RegisterController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['guest']);
-    }
+
     function index()
     {
         return view('auth.register');
     }
 
-    function store(Request $request)
+    function store(RegisterCreateRequest $request)
     {
-
-        $this->validate($request, [
-            'name' => 'required|min:3|max:255',
-            'username' => 'required|min:3|max:255',
-            'email' => 'required|email|max:255',
-            'password' => 'required|confirmed'
-        ]);
 
         User::create([
             'name' => $request->name,

@@ -3,12 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Models\User;
-use App\Models\UserPost;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\DB;
-
-use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
@@ -21,7 +15,7 @@ class BlogController extends Controller
 
     function show(Post $post)
     {
-        $users = $post->user_post->pluck('name');
+        $users = $post->user_post->unique('name')->pluck('name');
         
         return view('blog', compact('post'), compact('users'));
     }
